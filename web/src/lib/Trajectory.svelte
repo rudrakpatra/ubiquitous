@@ -99,6 +99,10 @@
     }
   };
   $: integrateMotion(motion);
+
+  const accScale = 20;
+  const velScale = 1.5;
+  const displacementScale = 0.1;
 </script>
 
 <h3>Trajectory Demo</h3>
@@ -125,42 +129,48 @@
   </button>
   <svg viewBox="-250 -250 500 500">
     <polyline
-      points={displacement.map((pt) => `${pt.x * 0.1},${pt.y * 0.1}`).join(" ")}
+      points={displacement
+        .map((pt) => `${pt.x * displacementScale},${pt.y * displacementScale}`)
+        .join(" ")}
       stroke="#0002"
       fill="none"
     />
     <polyline
-      points={velocity.map((pt) => `${pt.x * 0.4},${pt.y * 0.4}`).join(" ")}
+      points={velocity
+        .map((pt) => `${pt.x * velScale},${pt.y * velScale}`)
+        .join(" ")}
       stroke="#00f8"
       fill="none"
     />
     <polyline
-      points={acceleration.map((pt) => `${pt.x * 10},${pt.y * 10}`).join(" ")}
+      points={acceleration
+        .map((pt) => `${pt.x * accScale},${pt.y * accScale}`)
+        .join(" ")}
       stroke="#f008"
       fill="none"
     />
     <circle
-      cx={displacement[displacement.length - 1].x * 0.1}
-      cy={displacement[displacement.length - 1].y * 0.1}
-      r="2"
+      cx={displacement[displacement.length - 1].x * displacementScale}
+      cy={displacement[displacement.length - 1].y * displacementScale}
+      r="5"
       fill="#000"
     />
     <circle
-      cx={velocity[velocity.length - 1].x * 0.4}
-      cy={velocity[velocity.length - 1].y * 0.4}
-      r="2"
+      cx={velocity[velocity.length - 1].x * velScale}
+      cy={velocity[velocity.length - 1].y * velScale}
+      r="5"
       fill="#00f"
     />
     <circle
-      cx={acceleration[acceleration.length - 1].x * 10}
-      cy={acceleration[acceleration.length - 1].y * 10}
-      r="2"
+      cx={acceleration[acceleration.length - 1].x * accScale}
+      cy={acceleration[acceleration.length - 1].y * accScale}
+      r="5"
       fill="#f00"
     />
   </svg>
 {/if}
 <p style="color:#f008">
-  acc&nbsp;<strong>10x</strong>
+  acc&nbsp;<strong>{accScale}x</strong>
 </p>
 <p>
   {acceleration[acceleration.length - 1].x.toFixed(2)},
@@ -168,7 +178,7 @@
   {acceleration[acceleration.length - 1].z.toFixed(2)}
 </p>
 <p style="color:#00f8">
-  vel&nbsp;<strong>0.4x</strong>
+  vel&nbsp;<strong>{velScale}x</strong>
 </p>
 <p>
   {velocity[velocity.length - 1].x.toFixed(2)},
@@ -176,7 +186,7 @@
   {velocity[velocity.length - 1].z.toFixed(2)}
 </p>
 <p style="color:#0002">
-  displacement&nbsp;<strong>0.1x</strong>
+  displacement&nbsp;<strong>{displacementScale}x</strong>
 </p>
 <p>
   {displacement[displacement.length - 1].x.toFixed(2)},
