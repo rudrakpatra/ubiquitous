@@ -70,7 +70,6 @@
     const acc = motion?.acceleration;
     const delta = motion?.interval;
     if (acc && delta) {
-      points -= 1;
       acceleration.push({
         x: acc.x ? acc.x : 0,
         y: acc.y ? acc.y : 0,
@@ -122,22 +121,7 @@
   >
     reset
   </button>
-  <!-- <p>
-    {displacement[displacement.length - 1].x.toFixed(2)},
-    {displacement[displacement.length - 1].y.toFixed(2)},
-    {displacement[displacement.length - 1].z.toFixed(2)}
-  </p>
-  <p>
-    {velocity[velocity.length - 1].x.toFixed(2)},
-    {velocity[velocity.length - 1].y.toFixed(2)},
-    {velocity[velocity.length - 1].z.toFixed(2)}
-  </p> -->
-  <p>
-    {acceleration[acceleration.length - 1].x.toFixed(2)},
-    {acceleration[acceleration.length - 1].y.toFixed(2)},
-    {acceleration[acceleration.length - 1].z.toFixed(2)}
-  </p>
-  <svg viewBox="-100 -100 200 200">
+  <svg viewBox="-250 -250 500 500">
     <polyline
       points={displacement.map((pt) => `${pt.x * 0.1},${pt.y * 0.1}`).join(" ")}
       stroke="#0002"
@@ -174,13 +158,28 @@
   </svg>
 {/if}
 <p style="color:#f008">
-  acc <strong>10x</strong>
+  acc&nbsp;<strong>10x</strong>
+</p>
+<p>
+  {acceleration[acceleration.length - 1].x.toFixed(2)},
+  {acceleration[acceleration.length - 1].y.toFixed(2)},
+  {acceleration[acceleration.length - 1].z.toFixed(2)}
 </p>
 <p style="color:#00f8">
-  vel <strong>0.4x</strong>
+  vel&nbsp;<strong>0.4x</strong>
+</p>
+<p>
+  {velocity[velocity.length - 1].x.toFixed(2)},
+  {velocity[velocity.length - 1].y.toFixed(2)},
+  {velocity[velocity.length - 1].z.toFixed(2)}
 </p>
 <p style="color:#0002">
-  pos <strong>0.1x</strong>
+  displacement&nbsp;<strong>0.1x</strong>
+</p>
+<p>
+  {displacement[displacement.length - 1].x.toFixed(2)},
+  {displacement[displacement.length - 1].y.toFixed(2)},
+  {displacement[displacement.length - 1].z.toFixed(2)}
 </p>
 
 <style>
@@ -188,7 +187,6 @@
     background-color: #e2f2a2;
     border: none;
     border-radius: 5px;
-
     margin: 10px 0;
     padding: 10px 20px;
     font-size: 16px;
