@@ -144,29 +144,44 @@
       fill="none"
     />
     <polyline
-      points={velocity.map((pt) => `${pt.x * 1},${pt.y * 1}`).join(" ")}
-      stroke="#05f8"
+      points={velocity.map((pt) => `${pt.x * 0.4},${pt.y * 0.4}`).join(" ")}
+      stroke="#00f8"
       fill="none"
     />
     <polyline
-      points={acceleration.map((pt) => `${pt.x * 1},${pt.y * 1}`).join(" ")}
-      stroke="#f538"
+      points={acceleration.map((pt) => `${pt.x * 10},${pt.y * 10}`).join(" ")}
+      stroke="#f008"
       fill="none"
+    />
+    <circle
+      cx={displacement[displacement.length - 1].x * 0.1}
+      cy={displacement[displacement.length - 1].y * 0.1}
+      r="2"
+      fill="#000"
     />
     <circle
       cx={velocity[velocity.length - 1].x * 0.4}
       cy={velocity[velocity.length - 1].y * 0.4}
       r="2"
-      fill="#f00"
+      fill="#00f"
     />
     <circle
       cx={acceleration[acceleration.length - 1].x * 10}
       cy={acceleration[acceleration.length - 1].y * 10}
       r="2"
-      fill="#000"
+      fill="#f00"
     />
   </svg>
 {/if}
+<p style="color:#f008">
+  acc <strong>10x</strong>
+</p>
+<p style="color:#00f8">
+  vel <strong>0.4x</strong>
+</p>
+<p style="color:#0002">
+  pos <strong>0.1x</strong>
+</p>
 
 <style>
   button {
