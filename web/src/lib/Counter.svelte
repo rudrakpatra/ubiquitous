@@ -39,6 +39,7 @@
 
   let interval: number;
   let points = 0;
+  $: if (!isRecording) points = 0;
 
   $: alpha = orientation?.alpha ? orientation.alpha : alpha;
   $: beta = orientation?.beta ? orientation.beta : beta;

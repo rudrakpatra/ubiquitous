@@ -18,6 +18,8 @@
   let interval: number;
   let points = 0;
 
+  $: if (!isRecording) points = 0;
+
   $: alpha = orientation?.alpha ? orientation.alpha : alpha;
   $: beta = orientation?.beta ? orientation.beta : beta;
   $: gamma = orientation?.gamma ? orientation.gamma : gamma;
@@ -68,7 +70,7 @@
 
   const integrateMotion = (motion: DeviceMotionEvent) => {
     const acc = motion?.acceleration;
-    const delta = motion?.interval;
+    const delta = motion?.interval * 0.1;
     if (acc && delta) {
       acceleration.push({
         x: acc.x ? acc.x : 0,
