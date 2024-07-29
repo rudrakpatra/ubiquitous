@@ -137,7 +137,7 @@
     {acceleration[acceleration.length - 1].y.toFixed(2)},
     {acceleration[acceleration.length - 1].z.toFixed(2)}
   </p>
-  <svg viewBox="-100 -100 200 200">
+  <svg viewBox="-1000 -1000 2000 2000">
     <polyline
       points={displacement.map((pt) => `${pt.x * 0.1},${pt.y * 0.1}`).join(" ")}
       stroke="#0002"
