@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  import { spring } from "svelte/motion";
 
   let isRecording = false;
 
@@ -130,40 +129,40 @@
   <svg viewBox="-250 -250 500 500">
     <polyline
       points={displacement
-        .map((pt) => `${pt.x * displacementScale},${pt.y * displacementScale}`)
+        .map((pt) => `${pt.x * displacementScale},${-pt.y * displacementScale}`)
         .join(" ")}
       stroke="#0002"
       fill="none"
     />
     <polyline
       points={velocity
-        .map((pt) => `${pt.x * velScale},${pt.y * velScale}`)
+        .map((pt) => `${pt.x * velScale},${-pt.y * velScale}`)
         .join(" ")}
       stroke="#00f8"
       fill="none"
     />
     <polyline
       points={acceleration
-        .map((pt) => `${pt.x * accScale},${pt.y * accScale}`)
+        .map((pt) => `${pt.x * accScale},${-pt.y * accScale}`)
         .join(" ")}
       stroke="#f008"
       fill="none"
     />
     <circle
       cx={displacement[displacement.length - 1].x * displacementScale}
-      cy={displacement[displacement.length - 1].y * displacementScale}
+      cy={-displacement[displacement.length - 1].y * displacementScale}
       r="5"
       fill="#000"
     />
     <circle
       cx={velocity[velocity.length - 1].x * velScale}
-      cy={velocity[velocity.length - 1].y * velScale}
+      cy={-velocity[velocity.length - 1].y * velScale}
       r="5"
       fill="#00f"
     />
     <circle
       cx={acceleration[acceleration.length - 1].x * accScale}
-      cy={acceleration[acceleration.length - 1].y * accScale}
+      cy={-acceleration[acceleration.length - 1].y * accScale}
       r="5"
       fill="#f00"
     />
