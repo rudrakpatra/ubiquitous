@@ -2,7 +2,8 @@
   import { fade, fly } from "svelte/transition";
   import Counter from "./lib/Counter.svelte";
   import Trajectory from "./lib/Trajectory.svelte";
-  const pages = [Counter, Trajectory];
+  import Orientation from "./lib/Orientation.svelte";
+  const pages = [Counter, Trajectory, Orientation];
   let choice = 0;
   $: nextChoice = (choice + 1) % pages.length;
 </script>
